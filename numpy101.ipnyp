@@ -1,0 +1,351 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Numpy.ipynb",
+      "provenance": [],
+      "collapsed_sections": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "G3JoK_C8fvIi"
+      },
+      "source": [
+        "import numpy as np"
+      ],
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KG-1bmn3ifb_"
+      },
+      "source": [
+        "#1.Basic"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zszZR-5vfykk",
+        "outputId": "eb520142-cc01-4e73-beb2-c944d70901b8"
+      },
+      "source": [
+        "np.arange(0,10,2) #counting numbers\n",
+        "np.zeros(2) #zero vector with 2 length\n",
+        "np.zeros((2,2)) #2x2 zero matrix\n",
+        "np.ones((5,5)) #5x5 one matrix\n",
+        "np.linspace(1,10) #continous numbers btw 1 to 10\n",
+        "np.linspace(1,10,4) #continous numbers btw 1 to 10 by 4 quarter points "
+      ],
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 1.,  4.,  7., 10.])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 16
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "BvhmjIumf6IT",
+        "outputId": "da3ff0a8-d263-4b0d-f982-541257c38551"
+      },
+      "source": [
+        "np.eye(10) #identity matrix 10x10"
+      ],
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(10, 10)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 19
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Rg1EgLcRiiXg"
+      },
+      "source": [
+        "#2.Random Variables"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "MEO9ZMwKhdJw",
+        "outputId": "e8e89b24-81b2-4f12-d0f2-cb5a1b2ba1de"
+      },
+      "source": [
+        "np.random.standard_normal(5) #5 random numbers in distribution of standard normal distribution\n",
+        "np.random.randn(5,5) #5x5 random numbers in distribution of standard normal distribution\n",
+        "np.random.rand(3,4)  #uniform random 3x4 matrix\n",
+        "np.random.randint(1,10, (5,5)) # from 1 to 10 random integers into 5x5 matrix\n"
+      ],
+      "execution_count": 32,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[5, 6, 2, 8, 6],\n",
+              "       [1, 2, 8, 6, 5],\n",
+              "       [2, 6, 4, 3, 2],\n",
+              "       [8, 2, 5, 9, 7],\n",
+              "       [8, 5, 1, 3, 9]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 32
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "jkI6dWOhinkL",
+        "outputId": "c4fabd24-53cc-4985-ba59-f6321457b9fb"
+      },
+      "source": [
+        "randomArray = np.random.randint(1,10, 10)\n",
+        "randomArray #10 length vector with 10 random integers from 1 to 10\n",
+        "randomArray.reshape(2,5) #convert it into a 2x5 matrix \n",
+        "randomArray.max() #max val\n",
+        "randomArray.argmax() #index location of the max value in the vector/matrix"
+      ],
+      "execution_count": 42,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "7"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 42
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "xQ7m5O5RjOSU"
+      },
+      "source": [
+        "#3.Index Selection"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Unue4Aijjb1X",
+        "outputId": "d4efe195-d1fe-4b37-ae30-a28bea1cb72a"
+      },
+      "source": [
+        "arr = np.arange(0,11)\n",
+        "arr[-1] #last\n",
+        "arr[0] #first\n",
+        "arr[2:] #start with 2.index\n",
+        "arr[2:5] #start with 2.index to 5th\n",
+        "arr > 3 #bool vector\n",
+        "arr[arr > 3] "
+      ],
+      "execution_count": 57,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 4,  5,  6,  7,  8,  9, 10])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 57
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ElaYNtsDkCrc"
+      },
+      "source": [
+        "#4.Operations"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "fQwXZ9PJhwcT",
+        "outputId": "5394de1e-221d-4651-8659-11343952ea87"
+      },
+      "source": [
+        "arr = np.arange(0,10)\n",
+        "arr"
+      ],
+      "execution_count": 59,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 59
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4XScTTKRkRju",
+        "outputId": "0b13c877-a82f-4375-9e29-131d459adf44"
+      },
+      "source": [
+        "arr + 5 #element by element add into 5\n",
+        "arr ** 2 #element by element square of the value\n",
+        "np.sqrt(arr ** 2) #square root\n",
+        "np.cos(arr)\n",
+        "np.log((arr+1)+arr**2) #log base 10\n",
+        "arr.sum() #cumulative sum\n",
+        "arr.mean()\n",
+        "arr.var() #variance\n",
+        "arr.std() #standard deviation\n",
+        "arr.max() - arr.min() #range\n"
+      ],
+      "execution_count": 76,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "9"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 76
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "VPPBay6vlIAa"
+      },
+      "source": [
+        "###4.1.Matrix Operations"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "nXUsA-Z3kUQ_",
+        "outputId": "65d62cad-e8f4-4ef2-f377-ac3a6032c17e"
+      },
+      "source": [
+        "M = np.arange(0,25).reshape(5,5)\n",
+        "M2 = np.arange(0,25).reshape(5,5) * 2\n",
+        "M + M2 #MATRIX MATRIX Sum\n",
+        "M - M2\n",
+        "M.dot(M2) #dot product\n",
+        "M * 5 #MATRIX SCALER Production\n",
+        "M.sum() #sum of all values in the matrix\n",
+        "M.mean()\n",
+        "M.std()\n",
+        "M.var()\n",
+        "M.sum( axis = 0) #sum of the rows\n",
+        "M.sum( axis = 1) #sum of the columns"
+      ],
+      "execution_count": 89,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([ 10,  35,  60,  85, 110])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 89
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7F7vgZ85lP_X"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
